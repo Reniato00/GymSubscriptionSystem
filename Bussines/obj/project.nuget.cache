@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "mO6zBRvbhCQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Bussines.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\renyr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.3\\microsoft.extensions.dependencyinjection.abstractions.9.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

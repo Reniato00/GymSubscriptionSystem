@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rfv4LTFHNwg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\GymSubscriptionSystem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\renyr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.3\\microsoft.extensions.dependencyinjection.abstractions.9.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

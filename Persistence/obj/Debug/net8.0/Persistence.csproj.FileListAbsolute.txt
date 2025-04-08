@@ -1,0 +1,11 @@
+C:\Users\renyr\source\repos\GymSystem\Persistence\bin\Debug\net8.0\Persistence.deps.json
+C:\Users\renyr\source\repos\GymSystem\Persistence\bin\Debug\net8.0\Persistence.dll
+C:\Users\renyr\source\repos\GymSystem\Persistence\bin\Debug\net8.0\Persistence.pdb
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\Persistence.AssemblyInfoInputs.cache
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\Persistence.AssemblyInfo.cs
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\Persistence.csproj.CoreCompileInputs.cache
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\Persistence.dll
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\refint\Persistence.dll
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\Persistence.pdb
+C:\Users\renyr\source\repos\GymSystem\Persistence\obj\Debug\net8.0\ref\Persistence.dll
