@@ -3,8 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|c:\\users\\renyr\\source\\repos\\gymsystem\\gymsubscriptionsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|c:\\users\\renyr\\source\\repos\\gymsystem\\gymsubscriptionsystem\\controllers\\detailcustomercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|solutionrelative:controllers\\detailcustomercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|c:\\users\\renyr\\source\\repos\\gymsystem\\gymsubscriptionsystem\\views\\detailcustomer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|solutionrelative:views\\detailcustomer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|c:\\users\\renyr\\source\\repos\\gymsystem\\gymsubscriptionsystem\\views\\createcustomer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|solutionrelative:views\\createcustomer\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|c:\\users\\renyr\\source\\repos\\gymsystem\\gymsubscriptionsystem\\models\\detailcustomerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0593B3E9-1088-40ED-AC49-BDC1CCA555B4}|GymSubscriptionSystem.csproj|solutionrelative:models\\detailcustomerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{757EB1A2-CBDA-4DF4-AA43-538AFEDBBE98}|..\\Bussines\\Bussines.csproj|c:\\users\\renyr\\source\\repos\\gymsystem\\bussines\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +29,70 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T04:26:03.186Z",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Views\\CreateCustomer\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\CreateCustomer\\Index.cshtml",
+              "ToolTip": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Views\\CreateCustomer\\Index.cshtml",
+              "RelativeToolTip": "Views\\CreateCustomer\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T23:59:33.389Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DetailCustomerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Models\\DetailCustomerViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\DetailCustomerViewModel.cs",
+              "ToolTip": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Models\\DetailCustomerViewModel.cs",
+              "RelativeToolTip": "Models\\DetailCustomerViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T23:10:52.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DetailCustomerController.cs",
+              "DocumentMoniker": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Controllers\\DetailCustomerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DetailCustomerController.cs",
+              "ToolTip": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Controllers\\DetailCustomerController.cs",
+              "RelativeToolTip": "Controllers\\DetailCustomerController.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAEwDcAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T22:19:15.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Views\\DetailCustomer\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\DetailCustomer\\Index.cshtml",
+              "ToolTip": "C:\\Users\\renyr\\source\\repos\\GymSystem\\GymSubscriptionSystem\\Views\\DetailCustomer\\Index.cshtml",
+              "RelativeToolTip": "Views\\DetailCustomer\\Index.cshtml",
+              "ViewState": "AQIAABYAAAAAAAAAAAAiwCYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T21:49:42.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustomerService.cs",
+              "DocumentMoniker": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Services\\CustomerService.cs",
+              "RelativeDocumentMoniker": "..\\Bussines\\Services\\CustomerService.cs",
+              "ToolTip": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Services\\CustomerService.cs",
+              "RelativeToolTip": "..\\Bussines\\Services\\CustomerService.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAiwCEAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T21:40:46.694Z"
             }
           ]
         }

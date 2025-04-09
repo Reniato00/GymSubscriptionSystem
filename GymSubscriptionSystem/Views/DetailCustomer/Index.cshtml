@@ -1,0 +1,45 @@
+﻿@model DetailCustomerViewModel
+
+@{
+    ViewData["Title"] = "Detail Customer";
+    var color = Model.Status switch
+    {
+        "Active" => "bg-success",
+        "ExpiringSoon" => "bg-warning",
+        "Expired" => "bg-danger",
+        _ => "bg-secondary"
+    };
+}
+
+@if(Model.Client == null)
+{
+    <p>Este Cliente no Existe</p>
+}
+else
+{
+    <div>
+        <p>Name : @Model.Client.Name</p>
+        <p>Gender : @(Model.Client.Gender == true ? "Male" : Model.Client.Gender == false ? "Female" : "Not Specified")</p>
+        <p>Subscription ends : @Model.Client.SubscriptionExpiresAt</p>
+        <p>Active : @Model.Client.IsActive</p>
+        <p>Created : @Model.Client.CreatedAt</p>
+        <p>Status :  <span class="status-dot @color"></span> @Model.Status</p>
+    </div>
+
+    <div>
+        <form method="post" asp-action="IncreaseSubscription" asp-controller="DetailCustomer">
+            <input type="hidden" name="customerId" value="@Model.Client.Id" />
+
+            <select class="me-2" name="monthsToAdd">
+                <option value="1">1 Month</option>
+                <option value="2">2 Months</option>
+                <option value="3">3 Months</option>
+                <option value="12">1 Year</option>
+            </select>
+
+            <button class="btn btn-primary" type="submit">Increase Monthly Subscription</button>
+        </form>
+    </div>
+
+
+}

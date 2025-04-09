@@ -18,8 +18,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Home/CreateCustomer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGVDdXN0b21lci5jc2h0bWw=
+[C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/CreateCustomer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlYXRlQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Home/Index.cshtml]
@@ -28,6 +28,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Shared/_AlertMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BbGVydE1lc3NhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Shared/_CustomerCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DdXN0b21lckNhcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
@@ -41,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/DetailCustomer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWlsQ3VzdG9tZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-8q3l45nwl8
 
 [C:/Users/renyr/source/repos/GymSystem/GymSubscriptionSystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

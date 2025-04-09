@@ -1,0 +1,14 @@
+﻿@model Persistence.Entities.Customer
+
+<div class="col-3 card m-2 shadow-sm">
+    <a href="@Url.Action("Index","DetailCustomer", new { customer =Model.Id })" class="text-decoration-none text-reset">
+        <div class="card-body">
+            <h5 class="card-title text-truncate" title="@Model.Name">@Model.Name</h5>
+            <p class="card-text">
+                Gender: @(Model.Gender == true ? "Male" : Model.Gender == false ? "Female" : "Not specified")
+                <br />
+                Subscription Expires: @Model.SubscriptionExpiresAt.ToShortDateString()
+            </p>
+        </div>
+    </a>
+</div>

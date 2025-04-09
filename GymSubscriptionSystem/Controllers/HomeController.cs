@@ -16,30 +16,34 @@ namespace GymSubscriptionSystem.Controllers
             this.customerService = customerService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, string searchTerm = "")
         {
-            return View();
-        }
+            int pageSize = 12;  // Cuántos elementos mostrar por página
+            var customersQuery = customerService.GetAll().AsQueryable();
 
-        public IActionResult CreateCustomer()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateCustomer(CreateCustomerViewModel model)
-        {
-            if (!ModelState.IsValid)
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                TempData["ErrorMessage"] = "Ocurrió un error al crear el cliente.";
-                return RedirectToAction("Index");
+                customersQuery = customersQuery.Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()));
             }
 
-            customerService.CreateCustomer(model.Name, model.Gender, model.SubscriptionPlanMonths);
+            int totalCustomers = customersQuery.Count();
+            int totalPages = (int)Math.Ceiling(totalCustomers / (double)pageSize);
 
-            TempData["SuccessMessage"] = "¡Cliente creado exitosamente!";
-            return RedirectToAction("Index"); // o donde quieras redirigir
+            var customers = customersQuery
+                .Skip((page-1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var viewModel = new IndexViewModel
+            {
+                Customers = customers,
+                CurrentPage = page,
+                TotalPages = totalPages,
+                SearchTerm = searchTerm
+            };
+            return View(viewModel);
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

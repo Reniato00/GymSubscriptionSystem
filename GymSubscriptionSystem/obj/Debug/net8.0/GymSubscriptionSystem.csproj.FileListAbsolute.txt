@@ -35,3 +35,5 @@ C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem\bin\Debug\net8.0\Per
 C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem\obj\Debug\net8.0\GymSubscriptionSystem.csproj.AssemblyReference.cache
 C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem\obj\Debug\net8.0\GymSubsc.AAF85287.Up2Date
 C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem\obj\Debug\net8.0\GymSubscriptionSystem.sourcelink.json
+C:\Users\renyr\source\repos\GymSystem\GymSubscriptionSystem\obj\Debug\net8.0\scopedcss\Views\DetailCustomer\Index.cshtml.rz.scp.css

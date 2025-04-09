@@ -2,6 +2,7 @@
 {
     public class Customer : ControlMetrics
     {
+        public string Id { get; set; }
         public required string Name { get; set; }
 
         public bool? Gender { get; set; }

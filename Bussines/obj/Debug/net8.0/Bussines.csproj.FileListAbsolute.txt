@@ -13,3 +13,4 @@ C:\Users\renyr\source\repos\GymSystem\Bussines\obj\Debug\net8.0\Bussines.dll
 C:\Users\renyr\source\repos\GymSystem\Bussines\obj\Debug\net8.0\refint\Bussines.dll
 C:\Users\renyr\source\repos\GymSystem\Bussines\obj\Debug\net8.0\Bussines.pdb
 C:\Users\renyr\source\repos\GymSystem\Bussines\obj\Debug\net8.0\ref\Bussines.dll
+C:\Users\renyr\source\repos\GymSystem\Bussines\obj\Debug\net8.0\Bussines.sourcelink.json
