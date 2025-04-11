@@ -1,0 +1,26 @@
+CREATE TABLE customers (
+    Id NVARCHAR(450) NOT NULL PRIMARY KEY,
+    Name NVARCHAR(MAX) NOT NULL,
+    Gender BOOLEAN,
+    SubscriptionExpiresAt TIMESTAMP NOT NULL,
+    IsActive BOOLEAN NOT NULL,
+    CreatedAt TIMESTAMP NOT NULL,
+    LastUpdatedAt TIMESTAMP NOT NULL
+);
+
+CREATE TABLE plans (
+    Id VARCHAR(450) NOT NULL PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Duration INT NOT NULL,
+    IsActive BOOLEAN NOT NULL,
+    CreatedAt TIMESTAMP NOT NULL,
+    LastUpdatedAt TIMESTAMP NOT NULL
+);
+
+CREATE TABLE instructors (
+    Id VARCHAR(450) NOT NULL PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    IsActive BOOLEAN NOT NULL,
+    CreatedAt TIMESTAMP NOT NULL,
+    LastUpdatedAt TIMESTAMP NOT NULL
+);

@@ -1,10 +1,14 @@
 using Bussines.Extensions;
+using Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddServices();
+
+builder.Services.AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddRepositories();
 
 var app = builder.Build();
 

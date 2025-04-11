@@ -1,0 +1,1 @@
+1.- Create file appsettings.json (inside of GymSubscriptionSystem) before run the app

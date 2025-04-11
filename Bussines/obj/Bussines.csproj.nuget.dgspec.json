@@ -1,40 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Bussines.csproj": {}
+    "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Bussines/Bussines.csproj": {}
   },
   "projects": {
-    "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Bussines.csproj": {
+    "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Bussines/Bussines.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Bussines.csproj",
+        "projectUniqueName": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Bussines/Bussines.csproj",
         "projectName": "Bussines",
-        "projectPath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\Bussines.csproj",
-        "packagesPath": "C:\\Users\\renyr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Bussines\\obj\\",
+        "projectPath": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Bussines/Bussines.csproj",
+        "packagesPath": "/home/renato/.nuget/packages/",
+        "outputPath": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Bussines/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\renyr\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/renato/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\renyr\\source\\repos\\GymSystem\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Persistence\\Persistence.csproj"
+              "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/Persistence.csproj": {
+                "projectPath": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/Persistence.csproj"
               }
             }
           }
@@ -56,7 +49,7 @@
           "dependencies": {
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[9.0.3, )"
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
@@ -75,33 +68,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\renyr\\source\\repos\\GymSystem\\Persistence\\Persistence.csproj": {
+    "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\renyr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\renyr\\source\\repos\\GymSystem\\Persistence\\obj\\",
+        "projectPath": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/Persistence.csproj",
+        "packagesPath": "/home/renato/.nuget/packages/",
+        "outputPath": "/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\renyr\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/renato/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -124,6 +110,16 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -140,7 +136,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
