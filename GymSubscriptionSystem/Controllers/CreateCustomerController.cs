@@ -1,4 +1,5 @@
-﻿using Bussines.Services;
+﻿using System.Threading.Tasks;
+using Bussines.Services;
 using GymSubscriptionSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace GymSubscriptionSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCustomer(CreateCustomerViewModel model)
+        public async Task<IActionResult> CreateCustomer(CreateCustomerViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -26,7 +27,7 @@ namespace GymSubscriptionSystem.Controllers
                 return RedirectToAction("Index","Home");
             }
 
-            customerService.CreateCustomer(model.Name, model.Gender, model.SubscriptionPlanMonths);
+            await customerService.CreateCustomer(model.Name, model.Gender, model.SubscriptionPlanMonths);
 
             TempData["SuccessMessage"] = "¡Cliente creado exitosamente!";
             return RedirectToAction("Index","Home"); // o donde quieras redirigir

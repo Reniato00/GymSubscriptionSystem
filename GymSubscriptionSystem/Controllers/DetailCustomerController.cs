@@ -1,4 +1,6 @@
-﻿using Bussines.Services;
+﻿using System.Data.Common;
+using System.Threading.Tasks;
+using Bussines.Services;
 using GymSubscriptionSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Entities;
@@ -14,10 +16,10 @@ namespace GymSubscriptionSystem.Controllers
             this.customerService = customerService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             string? customerId = Request.Query["customer"];
-            client = customerService.GetId(customerId ?? "");
+            client = await customerService.GetId(customerId ?? "");
             var vm = new DetailCustomerViewModel
             {
                 Client = client,
@@ -42,18 +44,11 @@ namespace GymSubscriptionSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult IncreaseSubscription(string customerId, int monthsToAdd)
+        public async Task<IActionResult> IncreaseSubscription(string customerId, int monthsToAdd)
         {
-            client = customerService.GetId(customerId);
+            client = await customerService.GetId(customerId);
             var status = GetStatus(client!.SubscriptionExpiresAt);
-            if(status == "Active" || status == "ExpiringSoon")
-            {
-                client.SubscriptionExpiresAt = client.SubscriptionExpiresAt.AddMonths(monthsToAdd);
-            }
-            else
-            {
-                client.SubscriptionExpiresAt = DateTime.Now.AddMonths(monthsToAdd);
-            }
+            await customerService.IncreaseSubscription(status, monthsToAdd, client);
 
             return RedirectToAction("Index", "DetailCustomer", new { customer = customerId });
         }

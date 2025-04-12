@@ -1,16 +1,25 @@
-﻿using Persistence.Entities;
+﻿using System.Threading.Tasks;
+using Persistence.Entities;
+using Persistence.Repositories;
 
 namespace Bussines.Services
 {
     public interface ICustomerService
     {
-        void CreateCustomer(string name, string gender, int months);
-        List<Customer> GetAll();
-        Customer? GetId(string id);
+        Task CreateCustomer(string name, string gender, int months);
+        Task<List<Customer>> GetAll();
+        Task<Customer?> GetId(string id);
+        Task IncreaseSubscription(string status, int monthsToAdd, Customer client);
     }
 
     public class CustomerService : ICustomerService
     {
+        private readonly IMiAppRepository db;
+        public CustomerService(IMiAppRepository db)
+        {
+            this.db = db ?? throw new ArgumentNullException(nameof(db));
+        }
+
         private List<Customer> customers = new List<Customer>()
             {
                 new()
@@ -135,10 +144,14 @@ namespace Bussines.Services
                 }
             };
 
-        public void CreateCustomer(string name,string gender, int months)
+        // <summary>
+        // service to Create customers
+        // </summary>
+        public async Task CreateCustomer(string name,string gender, int months)
         {
             var customer = new Customer
             {
+                Id = Guid.NewGuid().ToString(),
                 Name = name,
                 Gender = gender switch
                 {
@@ -146,18 +159,35 @@ namespace Bussines.Services
                     "female" => false,
                     _ => null
                 },
-                SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(months)
+                SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(months),
+                CreatedAt=DateTime.UtcNow,
+                LastUpdatedAt=DateTime.UtcNow
             };
+            await db.CreateCustomerAsync(customer);
         }
 
-        public List<Customer> GetAll()
+        public async Task<List<Customer>> GetAll()
         {
-            return customers;
+            return  await db.GetAllCustomersAsync();
         }
 
-        public Customer? GetId(string id)
+        public async Task<Customer?> GetId(string id)
         {
-            return customers.Where(c => c.Id == id).FirstOrDefault();
+            return await db.GetId(id);
+        }
+
+        public async Task IncreaseSubscription(string status, int monthsToAdd, Customer client)
+        {
+            if (status == "Active" || status == "ExpiringSoon")
+            {
+                client.SubscriptionExpiresAt = DateTime.SpecifyKind(client.SubscriptionExpiresAt.AddMonths(monthsToAdd), DateTimeKind.Utc);
+                await db.UpdateSubscriptionCustomer(client);
+            }
+            else
+            {
+                client.SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(monthsToAdd);
+                await db.UpdateSubscriptionCustomer(client);
+            }
         }
     }
 }

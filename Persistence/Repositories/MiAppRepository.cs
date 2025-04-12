@@ -10,9 +10,12 @@ namespace Persistence.Repositories
     public interface IMiAppRepository
     {
         Task<List<Customer>> GetCustomersAsync(int skip, int take);
+        Task<List<Customer>> GetAllCustomersAsync();
+        Task<Customer?> GetId(string id);
         Task<int> CreateCustomerAsync(Customer customer);
         Task<List<Plans>> GetPlansAsync();
         Task<List<Instructor>> GetInstructorsAsync();
+        Task<int> UpdateSubscriptionCustomer(Customer customer);
     }
 
     public class MiAppRepository : IMiAppRepository
@@ -29,6 +32,16 @@ namespace Persistence.Repositories
             return await context.Customers.Skip(skip).Take(take).ToListAsync();
         }
 
+        public async Task<List<Customer>> GetAllCustomersAsync()
+        {
+            return await context.Customers.ToListAsync();
+        }
+
+        public async Task<Customer?> GetId(string id)
+        {
+            return await context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
         public async Task<int> CreateCustomerAsync(Customer customer)
         {
             await context.Customers.AddAsync(customer);
@@ -43,6 +56,13 @@ namespace Persistence.Repositories
         public async Task<List<Instructor>> GetInstructorsAsync()
         {
             return await context.Instructors.ToListAsync();
+        }
+
+        public async Task<int> UpdateSubscriptionCustomer(Customer customer)
+        {
+            context.Customers.Attach(customer);
+            context.Entry(customer).Property(c=> c.SubscriptionExpiresAt).IsModified = true;
+            return await context.SaveChangesAsync();
         }
     }
 }

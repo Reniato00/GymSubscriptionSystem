@@ -2,6 +2,7 @@ using Bussines.Services;
 using GymSubscriptionSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace GymSubscriptionSystem.Controllers
 {
@@ -16,14 +17,15 @@ namespace GymSubscriptionSystem.Controllers
             this.customerService = customerService;
         }
 
-        public IActionResult Index(int page = 1, string searchTerm = "")
+        public async Task<IActionResult> Index(int page = 1, string searchTerm = "")
         {
-            int pageSize = 12;  // Cuántos elementos mostrar por página
-            var customersQuery = customerService.GetAll().AsQueryable();
+            int pageSize = 12;  // Cuantos elementos mostrar por pï¿½gina
+            var customersQuery = await customerService.GetAll();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                customersQuery = customersQuery.Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()));
+                var filteredCustomers = customersQuery.Where(c => c.Name.ToLower().Contains(searchTerm.ToLower()));
+                customersQuery = filteredCustomers.ToList();
             }
 
             int totalCustomers = customersQuery.Count();
