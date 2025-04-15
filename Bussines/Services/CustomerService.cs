@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Bussines.Extensions;
 using Persistence.Entities;
 using Persistence.Repositories;
 
@@ -8,8 +9,9 @@ namespace Bussines.Services
     {
         Task CreateCustomer(string name, string gender, int months);
         Task<List<Customer>> GetAll();
+        Task<List<Customer>> GetAll(string term, int skip, int take);
         Task<Customer?> GetId(string id);
-        Task IncreaseSubscription(string status, int monthsToAdd, Customer client);
+        Task IncreaseSubscription(string customerId, int monthsToAdd);
     }
 
     public class CustomerService : ICustomerService
@@ -19,130 +21,6 @@ namespace Bussines.Services
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
         }
-
-        private List<Customer> customers = new List<Customer>()
-            {
-                new()
-                {
-                    Id = "A540",
-                    Name = "renato Abimael Ramirez Lopez",
-                    Gender = true,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(1),
-                },
-                new()
-                {
-                    Id = "AASDJ7",
-                    Name = "Sam itzel quiroz loera",
-                    Gender = false,
-                    SubscriptionExpiresAt = DateTime.Now.AddDays(-2),
-                },
-                new()
-                {
-                    Id = "AJ450",
-                    Name = "Lupe",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddDays(2),
-                },
-                new()
-                {
-                    Id = "48383DF",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "234REF",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "0495MVNF",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "KSDFJUEWR87",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "SDFWERCXV23",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "lmkdjsh9084",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "JNDCHUFR76",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "MZNXGSFYR76",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "938473628231D",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "VGCFEDWS476",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "IJUHYGTF873",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "QWERYUT983",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                },
-                new()
-                {
-                    Id = "873DHCJF746",
-                    Name = "Marie",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                }
-                ,
-                new()
-                {
-                    Id = "934JFURY7485UJ",
-                    Name = "Luna",
-                    Gender = null,
-                    SubscriptionExpiresAt = DateTime.Now.AddMonths(12),
-                }
-            };
 
         // <summary>
         // service to Create customers
@@ -171,21 +49,30 @@ namespace Bussines.Services
             return  await db.GetAllCustomersAsync();
         }
 
+        public async Task<List<Customer>> GetAll(string term, int skip, int take)
+        {
+            return await db.GetCustomersAsync(term,skip, take);
+        }
+
         public async Task<Customer?> GetId(string id)
         {
             return await db.GetId(id);
         }
 
-        public async Task IncreaseSubscription(string status, int monthsToAdd, Customer client)
+        public async Task IncreaseSubscription(string customerId, int monthsToAdd)
         {
+            var client = await GetId(customerId);
+            var subscriptionExpiresAt = client?.SubscriptionExpiresAt;
+            var status = subscriptionExpiresAt.GetStatus();
+
             if (status == "Active" || status == "ExpiringSoon")
             {
-                client.SubscriptionExpiresAt = DateTime.SpecifyKind(client.SubscriptionExpiresAt.AddMonths(monthsToAdd), DateTimeKind.Utc);
+                client!.SubscriptionExpiresAt = DateTime.SpecifyKind(client.SubscriptionExpiresAt.AddMonths(monthsToAdd), DateTimeKind.Utc);
                 await db.UpdateSubscriptionCustomer(client);
             }
             else
             {
-                client.SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(monthsToAdd);
+                client!.SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(monthsToAdd);
                 await db.UpdateSubscriptionCustomer(client);
             }
         }

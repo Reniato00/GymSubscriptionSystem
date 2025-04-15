@@ -9,7 +9,7 @@ namespace Persistence.Repositories
 
     public interface IMiAppRepository
     {
-        Task<List<Customer>> GetCustomersAsync(int skip, int take);
+        Task<List<Customer>> GetCustomersAsync(string term,int skip, int take);
         Task<List<Customer>> GetAllCustomersAsync();
         Task<Customer?> GetId(string id);
         Task<int> CreateCustomerAsync(Customer customer);
@@ -27,9 +27,13 @@ namespace Persistence.Repositories
             this.context = context;
         }
 
-        public async Task<List<Customer>> GetCustomersAsync(int skip, int take)
+        public async Task<List<Customer>> GetCustomersAsync(string term,int skip, int take)
         {
-            return await context.Customers.Skip(skip).Take(take).ToListAsync();
+            return await context.Customers
+            .Where(c => c.Name.ToLower().Contains(term))
+            .Skip(skip)
+            .Take(take)
+            .ToListAsync();
         }
 
         public async Task<List<Customer>> GetAllCustomersAsync()
