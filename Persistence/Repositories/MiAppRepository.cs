@@ -16,6 +16,7 @@ namespace Persistence.Repositories
         Task<List<Plans>> GetPlansAsync();
         Task<List<Instructor>> GetInstructorsAsync();
         Task<int> UpdateSubscriptionCustomer(Customer customer);
+        Task<CustomerDto?> GetExpiredTimeAndName(string id);
     }
 
     public class MiAppRepository : IMiAppRepository
@@ -67,6 +68,14 @@ namespace Persistence.Repositories
             context.Customers.Attach(customer);
             context.Entry(customer).Property(c=> c.SubscriptionExpiresAt).IsModified = true;
             return await context.SaveChangesAsync();
+        }
+
+        public async Task<CustomerDto?> GetExpiredTimeAndName(string id)
+        {
+            return await context.Customers
+                .Where(c => c.Id == id)
+                .Select(c => new CustomerDto { Expired = c.SubscriptionExpiresAt, Name = c.Name })
+                .FirstOrDefaultAsync();
         }
     }
 }

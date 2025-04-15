@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Bussines.Extensions;
+﻿using Bussines.Extensions;
 using Persistence.Entities;
 using Persistence.Repositories;
 
@@ -12,6 +11,7 @@ namespace Bussines.Services
         Task<List<Customer>> GetAll(string term, int skip, int take);
         Task<Customer?> GetId(string id);
         Task IncreaseSubscription(string customerId, int monthsToAdd);
+        Task<(string?,string?)> GetStatusAndName(string id);
     }
 
     public class CustomerService : ICustomerService
@@ -75,6 +75,12 @@ namespace Bussines.Services
                 client!.SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(monthsToAdd);
                 await db.UpdateSubscriptionCustomer(client);
             }
+        }
+
+        public async Task<(string?,string?)> GetStatusAndName(string id)
+        {
+            var customer = await db.GetExpiredTimeAndName(id);
+            return (customer?.Expired.GetStatus(), customer?.Name);
         }
     }
 }

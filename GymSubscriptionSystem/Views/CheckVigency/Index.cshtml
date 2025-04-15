@@ -15,6 +15,14 @@
     </div>
 }
 
+@if(TempData["Warning"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        @TempData["Warning"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 @if (TempData["Error"] != null)
 {
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -40,12 +48,16 @@
         { facingMode: "environment" },
         { fps: 10, qrbox: 250 },
         qrCodeMessage => {
-            console.log("Código leído:", qrCodeMessage);
+
             document.getElementById("codigoEscaneado").textContent = qrCodeMessage;
             document.getElementById("scannedCode").value = qrCodeMessage;
 
-            qr.stop(); // Detener el escáner
-            document.getElementById("qrForm").submit(); // Enviar al backend
+            qr.stop().then(()=>{
+                console.log("Scaned QR code: ", qrCodeMessage);
+                setTimeout(()=>{
+                    document.getElementById("qrForm").submit(); // Send to Backend
+                },3000);
+            }); 
         },
         errorMessage => {
             // Errores opcionales, puedes mostrar un mensaje si quieres
