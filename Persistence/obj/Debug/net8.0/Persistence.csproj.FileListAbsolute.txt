@@ -13,6 +13,7 @@ C:/Users/renyr/source/repos/GymSystem/Persistence/obj/Debug/net8.0/Persistence.s
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/bin/Debug/net8.0/Persistence.deps.json
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/bin/Debug/net8.0/Persistence.dll
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/bin/Debug/net8.0/Persistence.pdb
+/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/Persistence.csproj.AssemblyReference.cache
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/Persistence.GeneratedMSBuildEditorConfig.editorconfig
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/Persistence.AssemblyInfoInputs.cache
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/Persistence.AssemblyInfo.cs
@@ -22,4 +23,3 @@ C:/Users/renyr/source/repos/GymSystem/Persistence/obj/Debug/net8.0/Persistence.s
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/refint/Persistence.dll
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/Persistence.pdb
 /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/ref/Persistence.dll
-/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/Persistence/obj/Debug/net8.0/Persistence.csproj.AssemblyReference.cache

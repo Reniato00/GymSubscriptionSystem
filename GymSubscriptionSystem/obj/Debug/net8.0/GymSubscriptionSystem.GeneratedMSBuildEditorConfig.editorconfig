@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/CheckVigency/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2hlY2tWaWdlbmN5L0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/CreateCustomer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlQ3VzdG9tZXIvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
