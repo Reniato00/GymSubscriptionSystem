@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GymSubscriptionSystem.Controllers
 {
-
-
     public class CheckVigencyController : Controller
     {
         private readonly ILogger<CheckVigencyController> _logger;
@@ -16,20 +14,24 @@ namespace GymSubscriptionSystem.Controllers
             this.customerService = customerService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
 
             return View();
         }
 
-        public async Task<IActionResult> Details(string id)
+        public IActionResult Scan(string id)
         {
-            TempData["Success"] = "Subscription updated successfully.";
-            TempData["Error"] = "Something went wrong updating the subscription.";
+            if(!string.IsNullOrEmpty(id))
+            {
+                TempData["Success"] = "Subscription updated successfully.";
+            }
+            else
+            {
+                TempData["Error"] = "Something went wrong updating the subscription.";
+            }
 
-            
-
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,5 +1,6 @@
 @{
     ViewData["title"] = "CheckVigency";
+    <script src="https://unpkg.com/html5-qrcode"></script>
 }
 
 <h1>Welcome</h1>
@@ -24,25 +25,33 @@
 
 <div id="reader" style="width: 300px;"></div>
 
+<form id="qrForm" method="post" asp-controller="CheckVigency" asp-action="Scan">
+    <input type="hidden" id="scannedCode" name="id" />
+</form>
+
 <div id="resultado" style="margin-top: 20px;">
     <strong>Código escaneado:</strong> <span id="codigoEscaneado"></span>
 </div>
 
-<!-- Script de html5-qrcode -->
-<script src="https://unpkg.com/html5-qrcode"></script>
 <script>
     const qr = new Html5Qrcode("reader");
 
     qr.start(
-        { facingMode: "environment" }, // Usa la cámara trasera del teléfono
+        { facingMode: "environment" },
         { fps: 10, qrbox: 250 },
         qrCodeMessage => {
             console.log("Código leído:", qrCodeMessage);
             document.getElementById("codigoEscaneado").textContent = qrCodeMessage;
-            qr.stop(); // detener después de una lectura
+            document.getElementById("scannedCode").value = qrCodeMessage;
+
+            qr.stop(); // Detener el escáner
+            document.getElementById("qrForm").submit(); // Enviar al backend
         },
         errorMessage => {
-            // Errores al escanear (puedes omitir este callback si no quieres verlos)
+            // Errores opcionales, puedes mostrar un mensaje si quieres
         }
     );
 </script>
+
+
+

@@ -41,5 +41,25 @@ else
         </form>
     </div>
 
+    <div>
+        <p>QR Code</p>
+
+        <div id="qrcode"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+        <script>
+            const guid = "@Model.Client.Id"; // pasamos el guid desde C# a JS
+
+            var qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: guid,
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+                });
+        </script>
+    </div>
+
 
 }
