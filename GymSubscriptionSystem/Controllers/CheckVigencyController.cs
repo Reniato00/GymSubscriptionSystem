@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Bussines.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,16 +21,27 @@ namespace GymSubscriptionSystem.Controllers
             return View();
         }
 
-        public IActionResult Scan(string id)
+        public async Task<IActionResult> Scan(string id)
         {
-            if(!string.IsNullOrEmpty(id))
+            var customer = await customerService.GetStatusAndName(id);
+
+            if(customer.Item1 == "Active")
             {
-                TempData["Success"] = "Subscription updated successfully.";
+                TempData["Success"] = $"Subscription is active. Name: {customer.Item2}";
+            }
+            else if(customer.Item1 == "ExpiringSoon")
+            {
+                TempData["Warning"] = $"Subscription is expiring soon. Name: {customer.Item2}";
+            }
+            else if(customer.Item1 == "Expired")
+            {
+                TempData["Error"] = $"Subscription has expired. Name: {customer.Item2}";
             }
             else
             {
-                TempData["Error"] = "Something went wrong updating the subscription.";
+                TempData["Error"] = "Something went wrong.";
             }
+            
 
             return RedirectToAction("Index");
         }
