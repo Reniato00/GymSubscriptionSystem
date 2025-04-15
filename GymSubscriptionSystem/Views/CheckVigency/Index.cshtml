@@ -5,7 +5,52 @@
 
 <h1>Welcome</h1>
 
-<div>Scan your QR Id</div>
+<h3>Scan your QR Id</h3>
+
+<div id="resultado" style="margin-top: 20px;">
+    <strong>Código escaneado:</strong> <span id="codigoEscaneado"></span>
+</div>
+
+<div id="reader" style="width: 300px;"></div>
+
+<form id="qrForm" method="post" asp-controller="CheckVigency" asp-action="Scan">
+    <input type="hidden" id="scannedCode" name="id" />
+</form>
+
+<p id="messageId">Scan your QR code to check the vigency of your subscription.</p>
+
+<script>
+    const qr = new Html5Qrcode("reader");
+
+    qr.start(
+        { facingMode: "environment" },
+        { fps: 10, qrbox: 250 },
+        qrCodeMessage => {
+
+            document.getElementById("codigoEscaneado").textContent = qrCodeMessage;
+            document.getElementById("scannedCode").value = qrCodeMessage;
+
+            qr.stop().then(()=>{
+                console.log("Scaned QR code: ", qrCodeMessage);
+                let messageId = document.getElementById("messageId");
+                messageId.textContent = "QR code scanned successfully. Redirecting...";
+                messageId.style.color = "green";
+                messageId.style.fontWeight = "bold";
+                messageId.style.fontSize = "20px";
+                setTimeout(()=>{
+                    document.getElementById("qrForm").submit(); // Send to Backend
+                    messageId.textContent = "Scan your QR code to check the vigency of your subscription.";
+                    messageId.style.color = "black";
+                    messageId.style.fontWeight = "normal";
+                    messageId.style.fontSize = "16px";
+                },3000);
+            }); 
+        },
+        errorMessage => {
+            // Errores opcionales, puedes mostrar un mensaje si quieres
+        }
+    );
+</script>
 
 @if(TempData["Success"] != null)
 {
@@ -30,40 +75,5 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
-
-<div id="reader" style="width: 300px;"></div>
-
-<form id="qrForm" method="post" asp-controller="CheckVigency" asp-action="Scan">
-    <input type="hidden" id="scannedCode" name="id" />
-</form>
-
-<div id="resultado" style="margin-top: 20px;">
-    <strong>Código escaneado:</strong> <span id="codigoEscaneado"></span>
-</div>
-
-<script>
-    const qr = new Html5Qrcode("reader");
-
-    qr.start(
-        { facingMode: "environment" },
-        { fps: 10, qrbox: 250 },
-        qrCodeMessage => {
-
-            document.getElementById("codigoEscaneado").textContent = qrCodeMessage;
-            document.getElementById("scannedCode").value = qrCodeMessage;
-
-            qr.stop().then(()=>{
-                console.log("Scaned QR code: ", qrCodeMessage);
-                setTimeout(()=>{
-                    document.getElementById("qrForm").submit(); // Send to Backend
-                },3000);
-            }); 
-        },
-        errorMessage => {
-            // Errores opcionales, puedes mostrar un mensaje si quieres
-        }
-    );
-</script>
-
 
 
