@@ -26,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ3JlYXRlQ3VzdG9tZXIvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/ExpiredPeople/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhwaXJlZFBlb3BsZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/Shared/_CustomerCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19DdXN0b21lckNhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/Shared/_StatusAlertMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19TdGF0dXNBbGVydE1lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/renato/Documents/repos/GymSystem/GymSubscriptionSystem/GymSubscriptionSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
