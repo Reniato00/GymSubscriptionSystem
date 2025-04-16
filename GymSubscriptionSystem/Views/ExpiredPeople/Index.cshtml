@@ -2,4 +2,48 @@
     ViewData["Title"] = "Expired People";
 }
 
-<div>Expired People View</div>
+@model ExpiredPeopleViewModel
+
+<div>
+    <div class="row">
+        <div class="col-6">
+            <h1>Expired People</h1>
+            <p>List of people whose subscriptions have expired.</p>
+            <p>Click on the "Delete" button to remove a person from the list.</p>
+            <p>Note: This action is irreversible.</p>
+        </div>
+        <div class="col-6 d-flex flex-column justify-content-center align-items-center">
+            <select class="form-select mb-3" name="monthSelect" id="monthSelectId">
+                <option value="1">1 Month ago</option>
+                <option value="2">2 Months ago</option>
+                <option value="3">3 Months ago</option>
+                <option value="6">6 Months ago</option>
+            </select>
+            <button class="btn btn-danger">Delete All</button>
+        </div>
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Gender</th>
+                <th class="text-center">Subscription End Date</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model.ExpiredPeople)
+            {
+                <tr>
+                    <td class="text-center">@person.Name</td>
+                    <td class="text-center">@person.Gender</td>
+                    <td class="text-center">@person.SubscriptionExpiresAt.ToShortDateString()</td>
+                    <td class="text-center">
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
