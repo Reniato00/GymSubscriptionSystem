@@ -21,7 +21,7 @@ namespace GymSubscriptionSystem.Controllers
             int pageSize = 12;
             var customersQuery = await customerService.GetAll(searchTerm.ToLower(), (page-1) * pageSize, pageSize);
 
-            int totalCustomers = customersQuery.Count();
+            int totalCustomers = await customerService.GetCostumersCount(searchTerm.ToLower());
             int totalPages = (int)Math.Ceiling(totalCustomers / (double)pageSize);
 
             var viewModel = new IndexViewModel

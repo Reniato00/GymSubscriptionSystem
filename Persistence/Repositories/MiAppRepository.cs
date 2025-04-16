@@ -17,6 +17,7 @@ namespace Persistence.Repositories
         Task<List<Instructor>> GetInstructorsAsync();
         Task<int> UpdateSubscriptionCustomer(Customer customer);
         Task<CustomerDto?> GetExpiredTimeAndName(string id);
+        Task<int> GetCostumersCountAsync(string term);
     }
 
     public class MiAppRepository : IMiAppRepository
@@ -40,6 +41,13 @@ namespace Persistence.Repositories
         public async Task<List<Customer>> GetAllCustomersAsync()
         {
             return await context.Customers.ToListAsync();
+        }
+
+        public async Task<int> GetCostumersCountAsync(string term)
+        {
+            return await context.Customers
+            .Where(c=> c.Name.ToLower().Contains(term))
+            .CountAsync();
         }
 
         public async Task<Customer?> GetId(string id)

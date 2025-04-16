@@ -12,6 +12,7 @@ namespace Bussines.Services
         Task<Customer?> GetId(string id);
         Task IncreaseSubscription(string customerId, int monthsToAdd);
         Task<(string?,string?)> GetStatusAndName(string id);
+        Task<int> GetCostumersCount(string term);
     }
 
     public class CustomerService : ICustomerService
@@ -81,6 +82,11 @@ namespace Bussines.Services
         {
             var customer = await db.GetExpiredTimeAndName(id);
             return (customer?.Expired.GetStatus(), customer?.Name);
+        }
+
+        public async Task<int> GetCostumersCount(string term)
+        {
+            return await db.GetCostumersCountAsync(term);
         }
     }
 }
