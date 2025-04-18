@@ -18,6 +18,7 @@ namespace Persistence.Repositories
         Task<int> UpdateSubscriptionCustomer(Customer customer);
         Task<CustomerDto?> GetExpiredTimeAndName(string id);
         Task<int> GetCostumersCountAsync(string term);
+        Task<List<Customer>> GetExpiredCustomersAsync(int months);
     }
 
     public class MiAppRepository : IMiAppRepository
@@ -84,6 +85,13 @@ namespace Persistence.Repositories
                 .Where(c => c.Id == id)
                 .Select(c => new CustomerDto { Expired = c.SubscriptionExpiresAt, Name = c.Name })
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<List<Customer>> GetExpiredCustomersAsync(int months)
+        {
+            return await context.Customers
+                .Where(c => c.SubscriptionExpiresAt < DateTime.UtcNow.AddMonths(months))
+                .ToListAsync();
         }
     }
 }

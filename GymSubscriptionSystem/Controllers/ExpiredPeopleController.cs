@@ -1,23 +1,23 @@
+using Bussines.Services;
 using GymSubscriptionSystem.Models;
 using Microsoft.AspNetCore.Mvc;
-using Persistence.Entities;
 
 namespace GymSubscriptionSystem.Controllers
 {
     public class ExpiredPeopleController : Controller
     {
-        public IActionResult Index()
+        private readonly ICustomerService customerService;
+        public ExpiredPeopleController(ICustomerService customerService)
         {
-            var expiredPeople = new List<Customer>
-            {
-                new Customer { Name = "John Doe", SubscriptionExpiresAt = DateTime.Now.AddDays(-1) },
-                new Customer { Name = "Jane Smith", SubscriptionExpiresAt = DateTime.Now.AddDays(-2) },
-                new Customer { Name = "Alice Johnson", SubscriptionExpiresAt = DateTime.Now.AddDays(-3) }
-            };
+            this.customerService = customerService ?? throw new ArgumentNullException(nameof(customerService));    
+        }
 
+        public async Task<IActionResult> Index(int monthSelect = 1)
+        {
             var vm = new ExpiredPeopleViewModel
             {
-                ExpiredPeople = expiredPeople
+                ExpiredPeople = await customerService.GetExpiredCustomer(monthSelect),
+                MonthSelect = monthSelect 
             };
             return View(vm);
         }

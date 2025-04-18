@@ -13,12 +13,14 @@
             <p>Note: This action is irreversible.</p>
         </div>
         <div class="col-6 d-flex flex-column justify-content-center align-items-center">
-            <select class="form-select mb-3" name="monthSelect" id="monthSelectId">
-                <option value="1">1 Month ago</option>
-                <option value="2">2 Months ago</option>
-                <option value="3">3 Months ago</option>
-                <option value="6">6 Months ago</option>
-            </select>
+            <form method="POST" asp-action="Index" asp-controller="ExpiredPeople">
+                <select class="form-select mb-3" name="monthSelect" id="monthSelectId" onchange="this.form.submit()">
+                    <option value="1" selected="@(Model.MonthSelect == 1)">1 Month ago</option>
+                    <option value="2" selected="@(Model.MonthSelect == 2)">2 Months ago</option>
+                    <option value="3" selected="@(Model.MonthSelect == 3)">3 Months ago</option>
+                    <option value="6" selected="@(Model.MonthSelect == 6)">6 Months ago</option>
+                </select>
+            </form>
             <button class="btn btn-danger">Delete All</button>
         </div>
 
