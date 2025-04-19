@@ -25,13 +25,15 @@ namespace GymSubscriptionSystem.Controllers
             return View(vm);
         }
 
-        public IActionResult DeleteCustomer(string customerId)
+        [HttpPost]
+        public async  Task<IActionResult> DeleteCustomer(string customerId)
         {
             customerService.DeleteCustomer(customerId);
             return RedirectToAction("Index", "ExpiredPeople", new { monthSelect = 1 });
         }
 
-        public IActionResult DeleteAllCustomers(string selectedIds)
+        [HttpPost]
+        public async Task<IActionResult> DeleteAllCustomers(string selectedIds)
         {
             customerService.DeleteAllCustomers(selectedIds);
             return RedirectToAction("Index", "ExpiredPeople", new { monthSelect = 1 });

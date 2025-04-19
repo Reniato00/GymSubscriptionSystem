@@ -21,9 +21,9 @@
                     <option value="6" selected="@(Model.MonthSelect == 6)">6 Months ago</option>
                 </select>
             </form>
-            <form asp-action="DeleteAllCustomers" asp-controller="ExpiredPeople" method="POST">
+            <form asp-action="DeleteAllCustomers" asp-controller="ExpiredPeople" method="POST" onsubmit="return false;" id="deleteAllForm">
                 <input type="hidden" name="selectedIds" value="@Model.SelectedIds" />
-                <button type="submit" class="btn btn-danger">Delete All</button>
+                <button id="submitBtn" type="submit" class="btn btn-danger">Delete All</button>
             </form>
 
         </div>
@@ -46,9 +46,9 @@
                     <td class="text-center">@person.Gender</td>
                     <td class="text-center">@person.SubscriptionExpiresAt.ToShortDateString()</td>
                     <td class="text-center">
-                        <form asp-action="DeleteCustomer" asp-controller="ExpiredPeople" method="post">
+                        <form asp-action="DeleteCustomer" asp-controller="ExpiredPeople" method="post" onsubmit="return false;">
                             <input type="hidden" name="customerId" value="@person.Id" />
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button onclick="click_Delete(this)" type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -57,6 +57,35 @@
     </table>
 </div>
 
-<script>
+@await Html.PartialAsync("_ConfirmModal")
 
-</script>
+
+@section Scripts {
+    <script>
+        let formToSubmit;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const submitBtn = document.getElementById('submitBtn');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const deleteAllForm = document.getElementById('deleteAllForm');
+
+            submitBtn.addEventListener('click', function () {
+                formToSubmit = deleteAllForm;
+                var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                myModal.show();
+            });
+
+            confirmBtn.addEventListener('click', function () {
+                if (formToSubmit) {
+                    formToSubmit.submit();
+                }
+            });
+        });
+
+        function click_Delete(btn) {
+            formToSubmit = btn.closest('form')
+            var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            myModal.show();
+        }
+    </script>
+}
