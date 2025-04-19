@@ -14,6 +14,8 @@ namespace Bussines.Services
         Task<(string?,string?)> GetStatusAndName(string id);
         Task<int> GetCostumersCount(string term);
         Task<List<Customer>> GetExpiredCustomer(int months);
+        Task DeleteCustomer(string id);
+        Task DeleteAllCustomers(string ids);
     }
 
     public class CustomerService : ICustomerService
@@ -94,6 +96,16 @@ namespace Bussines.Services
         {
             var customers = await db.GetExpiredCustomersAsync(months * -1);
             return customers;
+        }
+
+        public async Task DeleteCustomer(string id)
+        {
+            await db.DeleteCustomer(id);
+        }
+
+        public async Task DeleteAllCustomers(string ids)
+        {
+            await db.DeleteAllCustomers(ids);
         }
     }
 }

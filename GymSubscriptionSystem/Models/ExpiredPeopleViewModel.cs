@@ -6,5 +6,6 @@ namespace GymSubscriptionSystem.Models
     {
         public List<Customer> ExpiredPeople { get; set; }
         public int MonthSelect { get; set; }
+        public string SelectedIds { get; set; }
     }
 }

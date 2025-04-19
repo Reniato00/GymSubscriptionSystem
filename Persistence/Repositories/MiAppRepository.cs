@@ -19,6 +19,8 @@ namespace Persistence.Repositories
         Task<CustomerDto?> GetExpiredTimeAndName(string id);
         Task<int> GetCostumersCountAsync(string term);
         Task<List<Customer>> GetExpiredCustomersAsync(int months);
+        Task DeleteCustomer(string id);
+        Task DeleteAllCustomers(string ids);
     }
 
     public class MiAppRepository : IMiAppRepository
@@ -92,6 +94,21 @@ namespace Persistence.Repositories
             return await context.Customers
                 .Where(c => c.SubscriptionExpiresAt < DateTime.UtcNow.AddMonths(months))
                 .ToListAsync();
+        }
+
+        public async Task DeleteCustomer(string id)
+        {
+            var sql = $"DELETE FROM customers WHERE id = '{id}'";
+            await context.Database.ExecuteSqlRawAsync(sql);    
+        }
+
+        public async Task DeleteAllCustomers(string ids)
+        {
+            var idList = ids.Split(',').Select(id => $"'{id}'");
+            var formattedIds = string.Join(",", idList);
+
+            var sql = $"DELETE FROM customers WHERE id IN ({formattedIds})";
+            await context.Database.ExecuteSqlRawAsync(sql);
         }
     }
 }

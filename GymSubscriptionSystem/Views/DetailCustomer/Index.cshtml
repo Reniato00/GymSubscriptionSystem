@@ -27,7 +27,7 @@ else
     </div>
 
     <div>
-        <form method="post" asp-action="IncreaseSubscription" asp-controller="DetailCustomer">
+        <form method="post" asp-action="IncreaseSubscription" asp-controller="DetailCustomer" onsubmit="return false;">
             <input type="hidden" name="customerId" value="@Model.Client.Id" />
 
             <select class="me-2" name="monthsToAdd">
@@ -37,7 +37,7 @@ else
                 <option value="12">1 Year</option>
             </select>
 
-            <button class="btn btn-primary" type="submit">Increase Monthly Subscription</button>
+            <button id="submitBtn" class="btn btn-primary" type="submit">Increase Monthly Subscription</button>
         </form>
     </div>
 
@@ -57,9 +57,30 @@ else
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
-                });
+            });
+
+
         </script>
     </div>
 
+    @await Html.PartialAsync("_ConfirmModal")
 
+    @section Scripts { 
+        <script>
+            document.addEventListener('DOMContentLoaded',function(){
+                const submitBtn = document.getElementById('submitBtn');
+                const confirmBtn = document.getElementById('confirmBtn');
+                const form = document.querySelector('form');
+                submitBtn.addEventListener('click', function () {
+                    // Mostrar el modal
+                    var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                    myModal.show();
+                });
+                confirmBtn.addEventListener('click', function () {
+                    // Enviar el formulario si confirman
+                    form.submit();
+                });
+            })
+        </script>
+    }
 }

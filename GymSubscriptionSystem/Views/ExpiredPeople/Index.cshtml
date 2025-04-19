@@ -21,7 +21,11 @@
                     <option value="6" selected="@(Model.MonthSelect == 6)">6 Months ago</option>
                 </select>
             </form>
-            <button class="btn btn-danger">Delete All</button>
+            <form asp-action="DeleteAllCustomers" asp-controller="ExpiredPeople" method="POST">
+                <input type="hidden" name="selectedIds" value="@Model.SelectedIds" />
+                <button type="submit" class="btn btn-danger">Delete All</button>
+            </form>
+
         </div>
 
     </div>
@@ -42,10 +46,17 @@
                     <td class="text-center">@person.Gender</td>
                     <td class="text-center">@person.SubscriptionExpiresAt.ToShortDateString()</td>
                     <td class="text-center">
-                        <button class="btn btn-danger">Delete</button>
+                        <form asp-action="DeleteCustomer" asp-controller="ExpiredPeople" method="post">
+                            <input type="hidden" name="customerId" value="@person.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+
+<script>
+
+</script>

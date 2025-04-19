@@ -14,12 +14,27 @@ namespace GymSubscriptionSystem.Controllers
 
         public async Task<IActionResult> Index(int monthSelect = 1)
         {
+            var allCustomers = await customerService.GetExpiredCustomer(monthSelect);
             var vm = new ExpiredPeopleViewModel
             {
-                ExpiredPeople = await customerService.GetExpiredCustomer(monthSelect),
-                MonthSelect = monthSelect 
+                ExpiredPeople = allCustomers,
+                MonthSelect = monthSelect,
+                SelectedIds = string.Join(",",allCustomers.Select(c => c.Id).ToList())
             };
+
             return View(vm);
+        }
+
+        public IActionResult DeleteCustomer(string customerId)
+        {
+            customerService.DeleteCustomer(customerId);
+            return RedirectToAction("Index", "ExpiredPeople", new { monthSelect = 1 });
+        }
+
+        public IActionResult DeleteAllCustomers(string selectedIds)
+        {
+            customerService.DeleteAllCustomers(selectedIds);
+            return RedirectToAction("Index", "ExpiredPeople", new { monthSelect = 1 });
         }
     }
 }
