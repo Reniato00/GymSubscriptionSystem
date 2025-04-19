@@ -1,4 +1,5 @@
-﻿using Bussines.Extensions;
+﻿using Bussines.Decorators;
+using Bussines.Extensions;
 using Persistence.Entities;
 using Persistence.Repositories;
 
@@ -21,9 +22,11 @@ namespace Bussines.Services
     public class CustomerService : ICustomerService
     {
         private readonly IMiAppRepository db;
-        public CustomerService(IMiAppRepository db)
+        private readonly ILoggerDecorator<CustomerService> logger;
+        public CustomerService(IMiAppRepository db, ILoggerDecorator<CustomerService> logger)
         {
             this.db = db ?? throw new ArgumentNullException(nameof(db));
+            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         // <summary>
@@ -46,6 +49,7 @@ namespace Bussines.Services
                 LastUpdatedAt=DateTime.UtcNow
             };
             await db.CreateCustomerAsync(customer);
+            logger.LogInformation("Admin", customer.Id, "created");
         }
 
         public async Task<List<Customer>> GetAll()
@@ -79,6 +83,8 @@ namespace Bussines.Services
                 client!.SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(monthsToAdd);
                 await db.UpdateSubscriptionCustomer(client);
             }
+
+            logger.LogInformation("Admin", client.Id, "increased subscription");
         }
 
         public async Task<(string?,string?)> GetStatusAndName(string id)
@@ -101,11 +107,13 @@ namespace Bussines.Services
         public async Task DeleteCustomer(string id)
         {
             await db.DeleteCustomer(id);
+            logger.LogInformation("Admin", id, "deleted");
         }
 
         public async Task DeleteAllCustomers(string ids)
         {
             await db.DeleteAllCustomers(ids);
+            logger.LogInformation("Admin", ids, "deleted all");
         }
     }
 }
