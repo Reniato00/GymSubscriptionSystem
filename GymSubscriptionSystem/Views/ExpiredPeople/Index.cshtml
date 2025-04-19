@@ -62,15 +62,17 @@
 
 @section Scripts {
     <script>
+
+        // With two buttons that brings up the modal you need to specify the form to submit
         let formToSubmit;
 
         document.addEventListener('DOMContentLoaded', function () {
             const submitBtn = document.getElementById('submitBtn');
             const confirmBtn = document.getElementById('confirmBtn');
-            const deleteAllForm = document.getElementById('deleteAllForm');
+            const deleteAllForm = document.getElementById('deleteAllForm'); 
 
             submitBtn.addEventListener('click', function () {
-                formToSubmit = deleteAllForm;
+                formToSubmit = deleteAllForm; //You can set the form to submit here in this case will be the deleteAllForm
                 var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
                 myModal.show();
             });
@@ -83,7 +85,7 @@
         });
 
         function click_Delete(btn) {
-            formToSubmit = btn.closest('form')
+            formToSubmit = btn.closest('form') //You set the form to submit here in this case will be the form that contains the delete button that you purchase
             var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
             myModal.show();
         }
