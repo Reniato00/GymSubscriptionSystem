@@ -1,4 +1,5 @@
-﻿using Bussines.Services;
+﻿using Bussines.Decorators;
+using Bussines.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bussines.Extensions
@@ -8,6 +9,12 @@ namespace Bussines.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICustomerService, CustomerService>();
+            return services;
+        }
+
+        public static IServiceCollection AddDecorators(this IServiceCollection services)
+        {
+            services.AddScoped(typeof(ILoggerDecorator<>), typeof(LoggerDecorator<>));
             return services;
         }
     }
