@@ -1,3 +1,20 @@
 appsettings.json
 appsettings.Development.json
 # Ignorar archivos de configuración de usuario
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.db
+*.log
+
+# Visual Studio
+.vs/
+
+# Others
+*.swp
+*.tmp
