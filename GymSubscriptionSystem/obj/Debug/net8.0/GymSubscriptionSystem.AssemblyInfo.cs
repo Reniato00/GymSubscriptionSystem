@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GymSubscriptionSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+511eecd952d22472f2a6d4381f2c10eae7a6909e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08872a0c70694d204b4597a06411794f1ca0372a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GymSubscriptionSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GymSubscriptionSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
