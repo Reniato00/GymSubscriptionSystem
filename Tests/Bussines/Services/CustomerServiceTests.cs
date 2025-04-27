@@ -71,6 +71,37 @@ namespace Tests.Bussines.Decorators
             // Assert
             Assert.Equal(customers, result);
         }
+
+        [Fact]
+        public async Task GetAllWithTerm_Test()
+        {
+            // Arrange
+            var customers = fixture.CreateMany<Customer>();
+            string term = "test";
+            int skip = 0;
+            int take = 10;
+            repositoryMock.Setup(x => x.GetCustomersAsync(term, skip, take)).ReturnsAsync(customers.ToList());
+
+            // Act
+            var result = await customerService.GetAll(term, skip, take);
+
+            // Assert
+            Assert.Equal(customers, result);
+        }
+
+        [Fact]
+        public async Task GetId_Test()
+        {
+            // Arrange
+            var customer = fixture.Create<Customer>();
+            repositoryMock.Setup(x => x.GetId(It.IsAny<string>())).ReturnsAsync(customer);
+
+            // Act
+            var result = await customerService.GetId(customer.Id);
+
+            // Assert
+            Assert.Equal(customer, result);
+        }
     }
 
 }
