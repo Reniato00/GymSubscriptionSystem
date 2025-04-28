@@ -1,1 +1,1 @@
-![diagramER-GymSystem](https://github.com/user-attachments/assets/38a95dd3-2dc6-43ad-aeb5-51bc0c38330e)
+![diagramER-GymSystem](https://github.com/user-attachments/assets/d74aff35-10f8-4e06-95c6-6cdd286ed03a)
