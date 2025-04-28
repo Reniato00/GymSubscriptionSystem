@@ -21,4 +21,5 @@ obj/
 
 # Ignore DLLs and assembly info files
 *.dll
+*.pdb
 *assemblyinfo*
