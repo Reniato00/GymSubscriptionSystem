@@ -18,3 +18,7 @@ obj/
 # Others
 *.swp
 *.tmp
+
+# Ignore DLLs and assembly info files
+*.dll
+*assemblyinfo*
