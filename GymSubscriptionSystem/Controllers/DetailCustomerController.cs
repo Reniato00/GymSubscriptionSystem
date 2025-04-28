@@ -3,9 +3,11 @@ using Bussines.Extensions;
 using GymSubscriptionSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GymSubscriptionSystem.Controllers
 {
+    [Authorize]
     public class DetailCustomerController : Controller
     {
         private readonly ICustomerService customerService;

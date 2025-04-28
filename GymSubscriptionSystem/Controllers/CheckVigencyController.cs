@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
 using Bussines.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymSubscriptionSystem.Controllers
 {
+    [Authorize]
     public class CheckVigencyController : Controller
     {
         private readonly ILogger<CheckVigencyController> _logger;

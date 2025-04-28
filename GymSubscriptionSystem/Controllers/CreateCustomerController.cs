@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Bussines.Services;
 using GymSubscriptionSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymSubscriptionSystem.Controllers
 {
+    [Authorize]
     public class CreateCustomerController : Controller
     {
         private readonly ICustomerService customerService;

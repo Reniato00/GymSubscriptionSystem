@@ -24,3 +24,7 @@ CREATE TABLE instructors (
     CreatedAt TIMESTAMP NOT NULL,
     LastUpdatedAt TIMESTAMP NOT NULL
 );
+
+ALTER TABLE instructors
+ADD Password NVARCHAR(255) NOT NULL;
+

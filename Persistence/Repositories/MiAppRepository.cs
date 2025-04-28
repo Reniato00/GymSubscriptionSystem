@@ -21,6 +21,8 @@ namespace Persistence.Repositories
         Task<List<Customer>> GetExpiredCustomersAsync(int months);
         Task DeleteCustomer(string id);
         Task DeleteAllCustomers(string ids);
+        Task<Instructor?> GetInstructor(string username, string password);
+        Task<Instructor?> GetInstructor(string name);
     }
 
     public class MiAppRepository : IMiAppRepository
@@ -109,6 +111,18 @@ namespace Persistence.Repositories
 
             var sql = $"DELETE FROM customers WHERE id IN ({formattedIds})";
             await context.Database.ExecuteSqlRawAsync(sql);
+        }
+
+        public async Task<Instructor?> GetInstructor(string username, string password)
+        {
+            return await context.Instructors
+                .FirstOrDefaultAsync(i => i.Name == username && i.Password == password);
+        }
+
+        public async Task<Instructor?> GetInstructor(string name)
+        {
+            return await context.Instructors
+                .FirstOrDefaultAsync(i => i.Name == name);
         }
     }
 }

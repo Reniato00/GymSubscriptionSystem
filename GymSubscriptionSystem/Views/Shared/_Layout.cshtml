@@ -33,8 +33,27 @@
                         </li>
                     </ul>
                 </div>
-                <div>
-                    &#128100; Juan Pérez
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="userMenuButton" aria-expanded="false">
+                        <span class="me-2">&#128100;</span>
+                        @(User.Identity?.IsAuthenticated == true ?User.Identity.Name : "Guest" )
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="userMenuButton">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li><a class="dropdown-item" href="@Url.Action("Index","Profile", new { name = User.Identity.Name })">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form asp-action="Logout" asp-controller="Login" method="post" style="display:inline;">
+                                    <button type="submit" class="dropdown-item">Log Out</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Login">Login In</a></li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>

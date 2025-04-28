@@ -9,6 +9,7 @@ namespace Bussines.Extensions
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IInstructorService, InstructorService>();
             return services;
         }
 

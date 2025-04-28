@@ -1,4 +1,6 @@
+using System.Net;
 using Bussines.Extensions;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Persistence.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,13 @@ builder.Services.AddDecorators();
 
 builder.Services.AddDbContext(builder.Configuration.GetConnectionString("DefaultConnection"));
 builder.Services.AddRepositories();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index"; // o donde tengas tu login
+        options.LogoutPath = "/Login/Logout";
+    });
 
 var app = builder.Build();
 
@@ -26,6 +35,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
