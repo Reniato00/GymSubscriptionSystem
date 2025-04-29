@@ -32,6 +32,7 @@ namespace GymSubscriptionSystem.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> IncreaseSubscription(string customerId, int monthsToAdd)
         {
             await customerService.IncreaseSubscription(customerId, monthsToAdd);
