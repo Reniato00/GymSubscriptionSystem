@@ -15,5 +15,8 @@ namespace Persistence.Entities
 
         [Column("subscriptionexpiresat")]
         public required DateTime SubscriptionExpiresAt { get; set; } // Datetime of when going to expires his subscription
+
+        [Column("nameuser")]
+        public string? NameUser { get; set; }
     }
 }

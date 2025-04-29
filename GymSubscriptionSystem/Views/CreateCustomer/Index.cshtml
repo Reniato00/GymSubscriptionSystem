@@ -8,10 +8,12 @@
 <p>All fields are required.</p>
 <p>Subscription plans are available for 1 month, 2 months, 3 months, or 1 year.</p>
 
-<form asp-action="CreateCustomer" method="post" onsubmit="return false;">
+<form id="customerForm" asp-action="CreateCustomer" asp-controller="CreateCustomer" method="post">
+    @Html.AntiForgeryToken()
+    
     <div class="d-flex justify-content-center align-items-center mb-3">
         <p class="me-2 mb-0">Name: </p>
-        <input class="form-control me-2" type="text" asp-for="Name" placeholder="Juan Carlos Perez Solis"/>
+        <input class="form-control me-2" type="text" asp-for="Name" placeholder="Juan Carlos Perez Solis" />
     </div>
 
     <div class="d-flex justify-content-center align-items-center mb-3">
@@ -43,22 +45,30 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('customerForm');
             const confirmBtn = document.getElementById('confirmBtn');
-            const form = document.querySelector('form');
+            const cancelBtn = document.getElementById('cancelBtn'); // Opcional
+            let isConfirmed = false;
 
-            submitBtn.addEventListener('click', function () {
-                // Mostrar el modal
-                var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-                myModal.show();
-            });
+            form.addEventListener('submit', function (e) {
+                if (!isConfirmed) {
+                    e.preventDefault(); // Cancelamos el submit normal
+                    var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                    myModal.show();
 
-            confirmBtn.addEventListener('click', function () {
-                // Enviar el formulario si confirman
-                form.submit();
+                    confirmBtn.onclick = function () {
+                        isConfirmed = true;
+                        myModal.hide();
+                        form.submit(); // Ahora sí se manda
+                    };
+
+                    if (cancelBtn) {
+                        cancelBtn.onclick = function () {
+                            myModal.hide();
+                        };
+                    }
+                }
             });
         });
     </script>
 }
-
-

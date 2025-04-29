@@ -18,6 +18,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     {
         options.LoginPath = "/Login/Index"; // o donde tengas tu login
         options.LogoutPath = "/Login/Logout";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+        options.SlidingExpiration = true;
     });
 
 var app = builder.Build();

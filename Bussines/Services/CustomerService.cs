@@ -7,7 +7,7 @@ namespace Bussines.Services
 {
     public interface ICustomerService
     {
-        Task CreateCustomer(string name, string gender, int months);
+        Task CreateCustomer(string name, string gender, int months, string nameUser);
         Task<List<Customer>> GetAll();
         Task<List<Customer>> GetAll(string term, int skip, int take);
         Task<Customer?> GetId(string id);
@@ -32,7 +32,7 @@ namespace Bussines.Services
         // <summary>
         // service to Create customers
         // </summary>
-        public async Task CreateCustomer(string name,string gender, int months)
+        public async Task CreateCustomer(string name,string gender, int months, string nameUser)
         {
             var customer = new Customer
             {
@@ -46,7 +46,8 @@ namespace Bussines.Services
                 },
                 SubscriptionExpiresAt = DateTime.UtcNow.AddMonths(months),
                 CreatedAt=DateTime.UtcNow,
-                LastUpdatedAt=DateTime.UtcNow
+                LastUpdatedAt=DateTime.UtcNow,
+                NameUser = nameUser
             };
             await db.CreateCustomerAsync(customer);
             logger.LogInformation("Admin", customer.Id, "created");
