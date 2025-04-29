@@ -28,6 +28,7 @@ namespace GymSubscriptionSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async  Task<IActionResult> DeleteCustomer(string customerId)
         {
             customerService.DeleteCustomer(customerId);
@@ -35,6 +36,7 @@ namespace GymSubscriptionSystem.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteAllCustomers(string selectedIds)
         {
             customerService.DeleteAllCustomers(selectedIds);

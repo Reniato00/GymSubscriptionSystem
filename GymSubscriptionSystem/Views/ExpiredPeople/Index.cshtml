@@ -21,9 +21,9 @@
                     <option value="6" selected="@(Model.MonthSelect == 6)">6 Months ago</option>
                 </select>
             </form>
-            <form asp-action="DeleteAllCustomers" asp-controller="ExpiredPeople" method="POST" onsubmit="return false;" id="deleteAllForm">
+            <form asp-action="DeleteAllCustomers" asp-controller="ExpiredPeople" method="POST" id="deleteAllForm">
                 <input type="hidden" name="selectedIds" value="@Model.SelectedIds" />
-                <button id="submitBtn" type="submit" class="btn btn-danger">Delete All</button>
+                <button type="submit" class="btn btn-danger">Delete All</button>
             </form>
 
         </div>
@@ -46,7 +46,7 @@
                     <td class="text-center">@person.Gender</td>
                     <td class="text-center">@person.SubscriptionExpiresAt.ToShortDateString()</td>
                     <td class="text-center">
-                        <form asp-action="DeleteCustomer" asp-controller="ExpiredPeople" method="post" onsubmit="return false;">
+                        <form asp-action="DeleteCustomer" asp-controller="ExpiredPeople" method="post">
                             <input type="hidden" name="customerId" value="@person.Id" />
                             <button onclick="click_Delete(this)" type="submit" class="btn btn-danger">Delete</button>
                         </form>
@@ -62,32 +62,57 @@
 
 @section Scripts {
     <script>
-
-        // With two buttons that brings up the modal you need to specify the form to submit
-        let formToSubmit;
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const submitBtn = document.getElementById('submitBtn');
+        document.addEventListener('DOMContentLoaded' function() {
             const confirmBtn = document.getElementById('confirmBtn');
-            const deleteAllForm = document.getElementById('deleteAllForm'); 
+            const cancelBtn = document.getElementById('cancelBtn'); // Optional
+            const formAll = document.getElementById('deleteAllForm');
+            //const form = document.getElementById('deleteForm');
+            let isConfirmed = false;
 
-            submitBtn.addEventListener('click', function () {
-                formToSubmit = deleteAllForm; //You can set the form to submit here in this case will be the deleteAllForm
-                var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-                myModal.show();
-            });
+            formAll.addEventListener('submit', function (e) {
+                if (!isConfirmed) {
+                    e.preventDefault();
+                    var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                    myModal.show();
 
-            confirmBtn.addEventListener('click', function () {
-                if (formToSubmit) {
-                    formToSubmit.submit();
+                    confirmBtn.onclick = function () {
+                        isConfirmed = true;
+                        myModal.hide();
+                        formAll.submit(); // Now it will be sent
+                    };
+
+                    if(cancelBtn) {
+                        cancelBtn.onclick = function () {
+                            myModal.hide();
+                        };
+                    }
                 }
             });
-        });
 
-        function click_Delete(btn) {
-            formToSubmit = btn.closest('form') //You set the form to submit here in this case will be the form that contains the delete button that you purchase
-            var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-            myModal.show();
-        }
+            function click_Delete(btn){
+                const form = btn.closest('form');
+                let isConfirmed = false;
+
+                form.addEventListener('submit', function (e) {
+                    if (!isConfirmed) {
+                        e.preventDefault();
+                        var myModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+                        myModal.show();
+
+                        confirmBtn.onclick = function () {
+                            isConfirmed = true;
+                            myModal.hide();
+                            form.submit(); // Now it will be sent
+                        };
+
+                        if(cancelBtn) {
+                            cancelBtn.onclick = function () {
+                                myModal.hide();
+                            };
+                        }
+                    }
+                });
+            }
+        });
     </script>
 }
